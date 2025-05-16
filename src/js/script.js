@@ -192,3 +192,105 @@ function initQuiz() {
             answers[questionId] = this.getAttribute('data-value');
         });
     });
+
+// Botão para questão anterior
+    prevQuestionBtn.addEventListener('click', function() {
+        if (currentQuestion > 0) {
+            showQuestion(currentQuestion - 1);
+            updateProgressBar();
+        }
+    });
+
+    // Botão para próxima questão ou resultado
+    nextQuestionBtn.addEventListener('click', function() {
+        const questionId = `question-${currentQuestion + 1}`;
+        
+        // Verificar se uma opção foi selecionada
+        if (!answers[questionId]) {
+            alert('Por favor, selecione uma opção antes de continuar.');
+            return;
+        }
+        
+        if (currentQuestion < questions.length - 1) {
+            showQuestion(currentQuestion + 1);
+            updateProgressBar();
+        } else {
+            showResult();
+        }
+    });
+
+    // Função para atualizar a barra de progresso
+    function updateProgressBar() {
+        const progress = ((currentQuestion + 1) / questions.length) * 100;
+        quizProgressBar.style.width = `${progress}%`;
+    }
+
+    // Função para mostrar o resultado
+    function showResult() {
+        quizQuestions.style.display = 'none';
+        quizControls.style.display = 'none';
+        quizResult.style.display = 'block';
+        
+        // Determinar o carro recomendado com base nas respostas
+        const resultCar = document.getElementById('result-car');
+        const recommendation = document.getElementById('recommendation');
+        
+        // Lógica simplificada para determinar o carro recomendado
+        // Em um caso real, seria uma lógica mais complexa baseada em todas as respostas
+        let carModel = '';
+        let carDescription = '';
+        
+        // Verificar uso principal (questão 1)
+        const mainUse = answers['question-1'];
+        const carType = answers['question-6'];
+        
+        if (mainUse === 'city' && carType === 'hatch') {
+            carModel = 'EcoCity Mini';
+            carDescription = 'Compacto e ágil, perfeito para a cidade. Estacionamento fácil e excelente custo-benefício.';
+        } else if ((mainUse === 'family' || mainUse === 'travel') && carType === 'suv') {
+            carModel = 'EcoSport EV';
+            carDescription = 'SUV compacto com autonomia de 450km e recarga rápida. Ideal para famílias e aventuras urbanas.';
+        } else if (carType === 'sedan' || mainUse === 'work') {
+            carModel = 'EcoSedan Plus';
+            carDescription = 'Sedan executivo com interior premium e tecnologia de ponta. Conforto e sofisticação para o dia a dia.';
+        } else if (carType === 'sport' || answers['question-4'] === 'performance') {
+            carModel = 'EcoSport GT';
+            carDescription = 'Versão esportiva com desempenho impressionante. Para quem busca adrenalina com sustentabilidade.';
+        } else {
+            carModel = 'EcoSport EV';
+            carDescription = 'SUV compacto com autonomia de 450km e recarga rápida. Ideal para famílias e aventuras urbanas.';
+        }
+        
+        resultCar.innerHTML = `
+            <h3>${carModel}</h3>
+            <p>${carDescription}</p>
+            <div class="car-image" style="background-image: url('../src/assets/img/${carModel.toLowerCase().replace(/\s+/g, '')}.jpg'); height: 250px; margin: 20px 0;"></div>
+        `;
+        
+        recommendation.innerHTML = `
+            <h4>Por que este modelo é ideal para você?</h4>
+            <p>Com base nas suas respostas, identificamos que o ${carModel} atende perfeitamente às suas necessidades de mobilidade, 
+            oferecendo o equilíbrio ideal entre autonomia, espaço e tecnologia que você procura.</p>
+            <p>Recomendamos que você agende um test drive para conhecer melhor este modelo.</p>
+            <a href="carros.html" class="btn">Ver Detalhes do Modelo</a>
+        `;
+    }
+
+    // Botão para reiniciar o quiz
+    restartQuizBtn.addEventListener('click', function() {
+        // Limpar respostas
+        for (let key in answers) {
+            delete answers[key];
+        }
+        
+        // Remover seleções
+        document.querySelectorAll('.quiz-option').forEach(option => {
+            option.classList.remove('selected');
+        });
+        
+        // Voltar para a introdução
+        quizResult.style.display = 'none';
+        quizIntro.style.display = 'block';
+        quizProgressBar.style.width = '0%';
+    });
+}
