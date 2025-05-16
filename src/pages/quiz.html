@@ -23,3 +23,164 @@
             </nav>
         </div>
     </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1 class="section-title">Quiz: Descubra o Carro Elétrico Ideal para Você</h1>
+                <p class="section-description">Responda às perguntas abaixo e descubra qual modelo da EcoMotors combina melhor com seu estilo de vida.</p>
+            </div>
+        </section>
+
+        <section class="quiz-section">
+            <div class="container">
+                <div class="quiz-container" id="quiz-container">
+                    <!-- Introdução do Quiz -->
+                    <div class="quiz-intro" id="quiz-intro">
+                        <h2>Bem-vindo ao Quiz da EcoMotors!</h2>
+                        <p>Este questionário vai ajudar você a encontrar o carro elétrico perfeito para suas necessidades. São apenas 10 perguntas rápidas sobre seu estilo de vida e preferências.</p>
+                        <p>Ao final, você receberá uma recomendação personalizada baseada em suas respostas.</p>
+                        <button class="btn" id="start-quiz">Iniciar Quiz</button>
+                    </div>
+
+                    <!-- Progresso do Quiz -->
+                    <div class="quiz-progress" id="quiz-progress">
+                        <div class="quiz-progress-bar" id="quiz-progress-bar"></div>
+                    </div>
+
+                    <!-- Questões do Quiz (serão preenchidas via JavaScript) -->
+                    <div class="quiz-questions" id="quiz-questions">
+                        <!-- Questão 1 -->
+                        <div class="quiz-question" id="question-1">
+                            <h3>1. Qual é o principal uso que você dará ao seu carro elétrico?</h3>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-value="city">Deslocamento urbano diário</div>
+                                <div class="quiz-option" data-value="travel">Viagens de longa distância</div>
+                                <div class="quiz-option" data-value="family">Transporte familiar</div>
+                                <div class="quiz-option" data-value="work">Uso profissional/comercial</div>
+                            </div>
+                        </div>
+
+                        <!-- Questão 2 -->
+                        <div class="quiz-question" id="question-2">
+                            <h3>2. Quantas pessoas normalmente viajam com você no carro?</h3>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-value="1">Geralmente só eu</div>
+                                <div class="quiz-option" data-value="2">Duas pessoas</div>
+                                <div class="quiz-option" data-value="4">Três a quatro pessoas</div>
+                                <div class="quiz-option" data-value="5">Cinco ou mais pessoas</div>
+                            </div>
+                        </div>
+
+                        <!-- Questão 3 -->
+                        <div class="quiz-question" id="question-3">
+                            <h3>3. Qual autonomia você considera essencial para seu dia a dia?</h3>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-value="short">Até 250km (uso urbano)</div>
+                                <div class="quiz-option" data-value="medium">Entre 250km e 400km</div>
+                                <div class="quiz-option" data-value="long">Entre 400km e 500km</div>
+                                <div class="quiz-option" data-value="max">Mais de 500km</div>
+                            </div>
+                        </div>
+
+                        <!-- Questão 4 -->
+                        <div class="quiz-question" id="question-4">
+                            <h3>4. Qual característica você mais valoriza em um carro?</h3>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-value="economy">Economia e eficiência</div>
+                                <div class="quiz-option" data-value="comfort">Conforto e tecnologia</div>
+                                <div class="quiz-option" data-value="performance">Desempenho e potência</div>
+                                <div class="quiz-option" data-value="space">Espaço interno e versatilidade</div>
+                            </div>
+                        </div>
+
+                        <!-- Questão 5 -->
+                        <div class="quiz-question" id="question-5">
+                            <h3>5. Você tem acesso a pontos de recarga em casa ou no trabalho?</h3>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-value="home">Sim, em casa</div>
+                                <div class="quiz-option" data-value="work">Sim, no trabalho</div>
+                                <div class="quiz-option" data-value="both">Sim, em ambos</div>
+                                <div class="quiz-option" data-value="none">Não, dependeria de pontos públicos</div>
+                            </div>
+                        </div>
+
+                        <!-- Questão 6 -->
+                        <div class="quiz-question" id="question-6">
+                            <h3>6. Qual tipo de carroceria você prefere?</h3>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-value="hatch">Hatch compacto</div>
+                                <div class="quiz-option" data-value="sedan">Sedan</div>
+                                <div class="quiz-option" data-value="suv">SUV</div>
+                                <div class="quiz-option" data-value="sport">Esportivo</div>
+                            </div>
+                        </div>
+
+                        <!-- Questão 7 -->
+                        <div class="quiz-question" id="question-7">
+                            <h3>7. Com que frequência você faz viagens longas (acima de 300km)?</h3>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-value="never">Raramente ou nunca</div>
+                                <div class="quiz-option" data-value="occasionally">Algumas vezes por ano</div>
+                                <div class="quiz-option" data-value="monthly">Mensalmente</div>
+                                <div class="quiz-option" data-value="weekly">Semanalmente</div>
+                            </div>
+                        </div>
+
+                        <!-- Questão 8 -->
+                        <div class="quiz-question" id="question-8">
+                            <h3>8. Qual é sua prioridade em relação ao tempo de recarga?</h3>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-value="overnight">Não me importo em recarregar durante a noite</div>
+                                <div class="quiz-option" data-value="hours">Prefiro recargas de algumas horas</div>
+                                <div class="quiz-option" data-value="fast">Preciso de recarga rápida (menos de 1 hora)</div>
+                                <div class="quiz-option" data-value="ultrafast">Essencial ter recarga ultrarrápida (menos de 30 min)</div>
+                            </div>
+                        </div>
+
+                        <!-- Questão 9 -->
+                        <div class="quiz-question" id="question-9">
+                            <h3>9. Qual faixa de investimento você considera para seu carro elétrico?</h3>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-value="entry">Entrada (modelos mais acessíveis)</div>
+                                <div class="quiz-option" data-value="mid">Intermediário</div>
+                                <div class="quiz-option" data-value="premium">Premium</div>
+                                <div class="quiz-option" data-value="luxury">Luxo (sem limitações de orçamento)</div>
+                            </div>
+                        </div>
+
+                        <!-- Questão 10 -->
+                        <div class="quiz-question" id="question-10">
+                            <h3>10. Qual recurso tecnológico você considera mais importante?</h3>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-value="autopilot">Piloto automático/assistência à condução</div>
+                                <div class="quiz-option" data-value="connectivity">Conectividade e entretenimento</div>
+                                <div class="quiz-option" data-value="efficiency">Tecnologias de eficiência energética</div>
+                                <div class="quiz-option" data-value="safety">Recursos avançados de segurança</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Controles do Quiz -->
+                    <div class="quiz-controls" id="quiz-controls">
+                        <button class="btn" id="prev-question" disabled>Anterior</button>
+                        <button class="btn" id="next-question">Próxima</button>
+                    </div>
+
+                    <!-- Resultado do Quiz -->
+                    <div class="quiz-result" id="quiz-result">
+                        <h2>Seu Resultado</h2>
+                        <p>Com base nas suas respostas, o carro elétrico ideal para você é:</p>
+                        <div class="result-car" id="result-car">
+                            <!-- Será preenchido via JavaScript -->
+                        </div>
+                        <div class="recommendation" id="recommendation">
+                            <!-- Será preenchido via JavaScript -->
+                        </div>
+                        <button class="btn" id="restart-quiz">Refazer Quiz</button>
+                        <a href="./carros.html" class="btn">Ver Todos os Modelos</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
