@@ -187,3 +187,85 @@
   background-color: var(--cor-secundaria);
   color: white;
 }
+
+/* Ajustes adicionais de responsividade */
+@media (max-width: 992px) {
+  .container {
+    width: 95%;
+  }
+  
+  .about-section .container, 
+  .mission-section .container, 
+  .infrastructure-section .container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .about-image {
+    order: -1;
+    margin-bottom: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    height: 400px;
+  }
+  
+  .slide-content {
+    width: 90%;
+    padding: 20px;
+  }
+  
+  .slide-content h2 {
+    font-size: 1.8rem;
+  }
+  
+  .benefit-item, .value-item {
+    padding: 20px;
+  }
+  
+  .quiz-container {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-section {
+    height: 350px;
+  }
+  
+  .slide-content h2 {
+    font-size: 1.5rem;
+  }
+  
+  .section-title {
+    font-size: 1.6rem;
+  }
+  
+  .cta-section {
+    padding: 40px 0;
+  }
+  
+  .cta-section h2 {
+    font-size: 1.6rem;
+  }
+  
+  .quiz-option {
+    padding: 12px;
+  }
+  
+  .quiz-controls {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .quiz-controls .btn {
+    width: 100%;
+  }
+}
+
+/* Classe utilitária para centralizar texto */
+.text-center {
+  text-align: center;
+}
