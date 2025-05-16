@@ -110,3 +110,85 @@ document.addEventListener('DOMContentLoaded', function() {
         initQuiz();
     }
 });
+
+// Função para inicializar o Quiz
+function initQuiz() {
+    const quizIntro = document.getElementById('quiz-intro');
+    const quizQuestions = document.getElementById('quiz-questions');
+    const quizControls = document.getElementById('quiz-controls');
+    const quizResult = document.getElementById('quiz-result');
+    const quizProgressBar = document.getElementById('quiz-progress-bar');
+    
+    const startQuizBtn = document.getElementById('start-quiz');
+    const prevQuestionBtn = document.getElementById('prev-question');
+    const nextQuestionBtn = document.getElementById('next-question');
+    const restartQuizBtn = document.getElementById('restart-quiz');
+    
+    const questions = document.querySelectorAll('.quiz-question');
+    let currentQuestion = 0;
+    const answers = {};
+
+    // Mostrar alerta de boas-vindas ao carregar a página
+    alert('Seja bem-vindo ao questionário da EcoMotors! Responda às perguntas para descobrir o carro elétrico ideal para você.');
+
+    // Esconder todas as questões inicialmente
+    questions.forEach(question => {
+        question.style.display = 'none';
+    });
+    
+    // Esconder controles e resultado inicialmente
+    quizControls.style.display = 'none';
+    quizResult.style.display = 'none';
+    quizProgressBar.style.width = '0%';
+
+    // Função para iniciar o quiz
+    startQuizBtn.addEventListener('click', function() {
+        quizIntro.style.display = 'none';
+        quizQuestions.style.display = 'block';
+        quizControls.style.display = 'flex';
+        showQuestion(0);
+        updateProgressBar();
+    });
+
+    // Função para mostrar uma questão específica
+    function showQuestion(index) {
+        questions.forEach(question => {
+            question.style.display = 'none';
+        });
+        questions[index].style.display = 'block';
+        currentQuestion = index;
+        
+        // Atualizar estado dos botões
+        prevQuestionBtn.disabled = currentQuestion === 0;
+        nextQuestionBtn.textContent = currentQuestion === questions.length - 1 ? 'Ver Resultado' : 'Próxima';
+        
+        // Marcar opção selecionada anteriormente, se houver
+        const questionId = `question-${currentQuestion + 1}`;
+        if (answers[questionId]) {
+            const options = questions[currentQuestion].querySelectorAll('.quiz-option');
+            options.forEach(option => {
+                option.classList.remove('selected');
+                if (option.getAttribute('data-value') === answers[questionId]) {
+                    option.classList.add('selected');
+                }
+            });
+        }
+    }
+
+    // Adicionar evento de clique às opções
+    document.querySelectorAll('.quiz-option').forEach(option => {
+        option.addEventListener('click', function() {
+            // Remover seleção anterior
+            const parent = this.parentElement;
+            parent.querySelectorAll('.quiz-option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            
+            // Adicionar seleção atual
+            this.classList.add('selected');
+            
+            // Salvar resposta
+            const questionId = this.closest('.quiz-question').id;
+            answers[questionId] = this.getAttribute('data-value');
+        });
+    });
