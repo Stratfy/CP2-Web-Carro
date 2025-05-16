@@ -455,3 +455,72 @@ section {
   border-radius: var(--borda-arredondada);
   margin-top: 20px;
 }
+
+/* Page Header */
+.page-header {
+  background-color: var(--cor-primaria);
+  color: white;
+  padding: 60px 0;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.page-header .section-title {
+  color: white;
+  margin-bottom: 15px;
+}
+
+.page-header .section-description {
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 1.1rem;
+}
+
+/* Rodapé */
+footer {
+  background-color: var(--cor-primaria);
+  color: var(--cor-texto-claro);
+  padding: 40px 0 20px;
+  margin-top: 60px;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.footer-column h3 {
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+}
+
+.footer-column ul {
+  list-style: none;
+}
+
+.footer-column ul li {
+  margin-bottom: 10px;
+}
+
+.footer-column a {
+  color: var(--cor-texto-claro);
+  text-decoration: none;
+}
+
+.footer-column a:hover {
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Classe utilitária para centralizar texto */
+.text-center {
+  text-align: center;
+}
