@@ -240,6 +240,7 @@ section {
   border: none;
   cursor: pointer;
   text-align: center;
+  margin-top: 15px;
 }
 
 .btn:hover {
