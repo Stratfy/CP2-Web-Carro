@@ -524,3 +524,108 @@ footer {
 .text-center {
   text-align: center;
 }
+
+/* Responsividade */
+@media (max-width: 992px) {
+  .container {
+    width: 95%;
+  }
+  
+  .about-section, 
+  .mission-section, 
+  .infrastructure-section {
+    grid-template-columns: 1fr;
+  }
+  
+  .about-image {
+    order: -1;
+    margin-bottom: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  nav ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: var(--cor-primaria);
+    flex-direction: column;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  nav ul.active {
+    display: flex;
+  }
+
+  nav ul li {
+    margin: 10px 0;
+  }
+
+  .hero-section {
+    height: 400px;
+  }
+
+  .slide-content {
+    width: 90%;
+    padding: 20px;
+  }
+  
+  .slide-content h2 {
+    font-size: 1.8rem;
+  }
+  
+  .benefit-item, .value-item {
+    padding: 20px;
+  }
+  
+  .quiz-container {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-section {
+    height: 350px;
+  }
+
+  .slide-content {
+    padding: 20px;
+    max-width: 90%;
+  }
+
+  .slide-content h2 {
+    font-size: 1.5rem;
+  }
+
+  .section-title {
+    font-size: 1.6rem;
+  }
+  
+  .cta-section {
+    padding: 40px 0;
+  }
+  
+  .cta-section h2 {
+    font-size: 1.6rem;
+  }
+  
+  .quiz-option {
+    padding: 12px;
+  }
+  
+  .quiz-controls {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .quiz-controls .btn {
+    width: 100%;
+  }
+}
