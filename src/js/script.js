@@ -60,3 +60,53 @@ document.addEventListener('DOMContentLoaded', function() {
     function startSlideshow() {
         slideInterval = setInterval(nextSlide, 5000); // Muda de slide a cada 5 segundos
     }
+
+    // Função para resetar o intervalo do slideshow
+    function resetInterval() {
+        clearInterval(slideInterval);
+        startSlideshow();
+    }
+
+    // Inicializar o slideshow se estiver na página inicial
+    if (document.querySelector('.hero-section')) {
+        initSlideshow();
+    }
+
+    // Configurar imagens dos carros na página inicial
+    const carImages = document.querySelectorAll('.car-image');
+    if (carImages.length > 0) {
+        // Verificar se estamos na página inicial ou na página de carros
+        const isHomePage = window.location.pathname.endsWith('index.html') || window.location.pathname.endsWith('/');
+        const basePath = isHomePage ? 'src/assets/img/' : '../src/assets/img/';
+        
+        // Configurar imagens dos carros
+        document.querySelectorAll('#car-image-1').forEach(img => {
+            img.style.backgroundImage = `url('${basePath}car1.jpg')`;
+        });
+        
+        document.querySelectorAll('#car-image-2').forEach(img => {
+            img.style.backgroundImage = `url('${basePath}car2.jpg')`;
+        });
+        
+        document.querySelectorAll('#car-image-3').forEach(img => {
+            img.style.backgroundImage = `url('${basePath}car3.jpg')`;
+        });
+        
+        document.querySelectorAll('#car-image-4').forEach(img => {
+            img.style.backgroundImage = `url('${basePath}car4.jpg')`;
+        });
+    }
+
+    // Configurar imagens da página Sobre
+    const aboutImages = document.querySelectorAll('.about-image');
+    if (aboutImages.length > 0) {
+        document.querySelector('#about-image-1').style.backgroundImage = "url('../src/assets/img/about1.jpg')";
+        document.querySelector('#about-image-2').style.backgroundImage = "url('../src/assets/img/about2.jpg')";
+        document.querySelector('#about-image-3').style.backgroundImage = "url('../src/assets/img/about3.jpg')";
+    }
+
+    // Inicializar o Quiz se estiver na página de quiz
+    if (document.querySelector('#quiz-container')) {
+        initQuiz();
+    }
+});
