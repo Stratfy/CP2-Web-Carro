@@ -20,12 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Função para inicializar o slideshow
     function initSlideshow() {
         if (slides.length === 0) return; // Sai da função se não houver slides
-        
-        // Configurar os backgrounds dos slides
-        slides[0].style.backgroundImage = "linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../src/assets/img/slide1.jpg')";
-        slides[1].style.backgroundImage = "linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../src/assets/img/slide2.jpg')";
-        slides[2].style.backgroundImage = "linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../src/assets/img/slide3.jpg')";
-        
+              
         // Iniciar o slideshow automático
         startSlideshow();
         
@@ -230,49 +225,56 @@ function initQuiz() {
         quizQuestions.style.display = 'none';
         quizControls.style.display = 'none';
         quizResult.style.display = 'block';
-        
+    
         // Determinar o carro recomendado com base nas respostas
         const resultCar = document.getElementById('result-car');
         const recommendation = document.getElementById('recommendation');
-        
+    
         // Lógica simplificada para determinar o carro recomendado
-        // Em um caso real, seria uma lógica mais complexa baseada em todas as respostas
         let carModel = '';
         let carDescription = '';
-        
-        // Verificar uso principal (questão 1)
+        let carImageSrc = '';
+    
+        // Verificar uso principal (questão 1) e tipo de carroceria (questão 6)
         const mainUse = answers['question-1'];
         const carType = answers['question-6'];
-        
+    
         if (mainUse === 'city' && carType === 'hatch') {
             carModel = 'EcoCity Mini';
             carDescription = 'Compacto e ágil, perfeito para a cidade. Estacionamento fácil e excelente custo-benefício.';
+            carImageSrc = '../assets/img/EcoCity Mini.jpg';
         } else if ((mainUse === 'family' || mainUse === 'travel') && carType === 'suv') {
             carModel = 'EcoSport EV';
             carDescription = 'SUV compacto com autonomia de 450km e recarga rápida. Ideal para famílias e aventuras urbanas.';
+            carImageSrc = '../assets/img/EcoSport EV.jpg';
         } else if (carType === 'sedan' || mainUse === 'work') {
             carModel = 'EcoSedan Plus';
             carDescription = 'Sedan executivo com interior premium e tecnologia de ponta. Conforto e sofisticação para o dia a dia.';
+            carImageSrc = '../assets/img/EcoSedan Plus.jpg';
         } else if (carType === 'sport' || answers['question-4'] === 'performance') {
             carModel = 'EcoSport GT';
             carDescription = 'Versão esportiva com desempenho impressionante. Para quem busca adrenalina com sustentabilidade.';
+            carImageSrc = '../assets/img/EcoSport GT.jpg';
         } else {
             carModel = 'EcoSport EV';
             carDescription = 'SUV compacto com autonomia de 450km e recarga rápida. Ideal para famílias e aventuras urbanas.';
+            carImageSrc = '../assets/img/EcoSport EV.jpg';
         }
-        
+    
         resultCar.innerHTML = `
             <h3>${carModel}</h3>
             <p>${carDescription}</p>
-            <div class="car-image" style="background-image: url('../src/assets/img/${carModel.toLowerCase().replace(/\s+/g, '')}.jpg'); height: 250px; margin: 20px 0;"></div>
+            <div class="car-image-result">
+                <img src="${carImageSrc}" alt="${carModel}" style="width: 100%; height: 250px; object-fit: cover; border-radius: 8px; margin: 20px 0;">
+            </div>
         `;
         
         recommendation.innerHTML = `
-            <h4>Por que este modelo é ideal para você?</h4>
-            <p>Com base nas suas respostas, identificamos que o ${carModel} atende perfeitamente às suas necessidades de mobilidade, 
-            oferecendo o equilíbrio ideal entre autonomia, espaço e tecnologia que você procura.</p>
-            <p>Recomendamos que você agende um test drive para conhecer melhor este modelo.</p>
-            <a href="carros.html" class="btn">Ver Detalhes do Modelo</a>
+        <h4>Por que este modelo é ideal para você?</h4>
+        <p>Com base nas suas respostas, identificamos que o ${carModel} atende perfeitamente às suas necessidades de mobilidade, 
+        oferecendo o equilíbrio ideal entre autonomia, espaço e tecnologia que você procura.</p>
+        <p>Recomendamos que você agende um test drive para conhecer melhor este modelo.</p>
+        <a href="carros.html" class="btn">Ver Detalhes do Modelo</a>
         `;
     }
 
